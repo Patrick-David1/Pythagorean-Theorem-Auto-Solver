@@ -3,5 +3,5 @@ I'm back with another one.
 Note:
 Solving only applies to numbers that can be squared.
 
-Pythagorean Theorem2.cpp (Fix)
-Pythagorean Theorem3.cpp (For non-perfect squared numbers)
+Pythagorean Theorem 1.cpp (Fix)
+Pythagorean Theorem 2.cpp (For non-perfect squared numbers)
