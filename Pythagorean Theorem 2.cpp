@@ -1,90 +1,81 @@
 #include <iostream>
-#include <math.h>
+#include <cmath>
 
 using namespace std;
 
-int main()
-{
-    
+int main() {
     cout << "Choose your operation.\n";
     cout << "Enter '1' if 'a' is missing.\n";
     cout << "Enter '2' if 'b' is missing.\n";
     cout << "Enter '3' if 'c' is missing.\n";
-    
-    
-    int input1;
-    cin >> input1;
-    
-    //when c is missing use addition//
-    //when a and b is missing use subtraction//
-    
-    int a1;
-    int b1;
-    int c1;
-    int optr1;
-    int optr11;
-    int optr111;
-    
-    int a2;
-    int b2;
-    int c2;
-    int optr2;
-    int optr22;
-    int optr222;
-    
-    
-    int a3;
-    int b3;
-    int c3;
-    int optr3;
-    int optr33;
-    int optr333;
-    
-    if (input1 == 1) {
-        
-        cout << "Enter the value of 'b'.\n";
-        cin >> b1;
-        cout << "Enter the value of 'c'.\n";
-        cin >> c1;
-        optr1 = b1 * b1;
-        cout << "b^ (" << b1 << ") is equal to " << optr1 << ".\n";
-        optr11 = c1 * c1;
-        cout << "c^ (" << c1 << ") is equal to " << optr11 << ".\n";
+
+    int choice;
+    cin >> choice;
+
+    int a, b, c;
+    int result_sq = 0;
+    char missing_side;
+
+    if (choice == 1) {
+        missing_side = 'a';
+        cout << "Enter the value of 'b': ";
+        cin >> b;
+        cout << "Enter the value of 'c': ";
+        cin >> c;
+
+        int b_sq = b * b;
+        int c_sq = c * c;
+        cout << "b^2 (" << b << ") is equal to " << b_sq << ".\n";
+        cout << "c^2 (" << c << ") is equal to " << c_sq << ".\n";
         cout << "Subtracting...\n";
-        optr111 = optr11 - optr1;
-        cout << "Answer:\n" << "a = " << optr111;
-        
+        result_sq = c_sq - b_sq;
     } 
-    
-    else if (input1 == 2) {
-    
-        cout << "Enter the value of 'a'.\n";
-        cin >> a2;
-        cout << "Enter the value of 'c'.\n";
-        cin >> c2;
-        optr2 = a2 * a2;
-        cout << "a^ (" << a2 << ") is equal to " << optr2 << ".\n";
-        optr22 = c2 * c2;
-        cout << "c^ (" << c2 << ") is equal to " << optr22 << ".\n";
+    else if (choice == 2) {
+        missing_side = 'b';
+        cout << "Enter the value of 'a': ";
+        cin >> a;
+        cout << "Enter the value of 'c': ";
+        cin >> c;
+
+        int a_sq = a * a;
+        int c_sq = c * c;
+        cout << "a^2 (" << a << ") is equal to " << a_sq << ".\n";
+        cout << "c^2 (" << c << ") is equal to " << c_sq << ".\n";
         cout << "Subtracting...\n";
-        optr222 = optr22 - optr2;
-        cout << "Answer:\n" << "b = " << optr222;
+        result_sq = c_sq - a_sq;
     } 
-    
-    else if (input1 == 3) {   
-        
-        cout << "Enter the value of 'a'.\n";
-        cin >> a3;
-        cout << "Enter the value of 'b'.\n";
-        cin >> b3;
-        optr3 = a3 * a3;
-        cout << "a^ (" << a3 << ") is equal to " << optr3 << ".\n";
-        optr33 = b3 * b3;
-        cout << "b^ (" << b3 << ") is equal to " << optr33 << ".\n";
+    else if (choice == 3) {
+        missing_side = 'c';
+        cout << "Enter the value of 'a': ";
+        cin >> a;
+        cout << "Enter the value of 'b': ";
+        cin >> b;
+
+        int a_sq = a * a;
+        int b_sq = b * b;
+        cout << "a^2 (" << a << ") is equal to " << a_sq << ".\n";
+        cout << "b^2 (" << b << ") is equal to " << b_sq << ".\n";
         cout << "Adding...\n";
-        optr333 = optr3 + optr33;
-        cout << "Answer:\n" << "c = " << optr333;
-    };
-    
-    //Note: Solving only applies to non-perfect sqaured numbers.//
+        result_sq = a_sq + b_sq;
+    } 
+    else {
+        cout << "Invalid choice.\n";
+        return 0;
+    }
+
+    // Check if the answer is valid and whether it's a perfect square
+    if (result_sq <= 0) {
+        cout << "Invalid triangle sides (hypotenuse 'c' must be the longest side).\n";
+    } else {
+        int root = static_cast<int>(sqrt(result_sq));
+        
+        if (root * root == result_sq) {
+            cout << "Taking the square root...\n";
+            cout << "Answer (Perfect Square):\n" << missing_side << " = " << root << "\n";
+        } else {
+            cout << "Answer (Non-Perfect Square):\n" << missing_side << " = sqrt(" << result_sq << ")\n";
+        }
+    }
+
+    return 0;
 }
